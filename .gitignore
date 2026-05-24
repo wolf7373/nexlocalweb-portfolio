@@ -1,0 +1,12 @@
+node_modules/
+.next/
+dist/
+build/
+.turbo/
+.cache/
+.DS_Store
+*.log
+.env
+.env.local
+client/.env
+server/.env
