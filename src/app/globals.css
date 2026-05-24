@@ -128,7 +128,7 @@ a {
   position: relative;
   overflow: hidden;
   display: inline-flex;
-  min-height: 48px;
+  min-height: 46px;
   align-items: center;
   justify-content: center;
   gap: 10px;
@@ -169,7 +169,7 @@ a {
 }
 
 .project-preview {
-  min-height: 224px;
+  min-height: 154px;
   aspect-ratio: 16 / 9;
   border-radius: 8px;
   border: 1px solid rgba(255,255,255,.12);
@@ -303,6 +303,29 @@ a {
 
   .testimonial-track {
     animation-duration: 42s;
+  }
+}
+
+@media (min-width: 640px) {
+  .project-preview {
+    min-height: 190px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .project-preview {
+    min-height: 224px;
+  }
+}
+
+@media (max-width: 420px) {
+  .btn {
+    min-height: 44px;
+    padding-inline: 20px;
+  }
+
+  .project-preview {
+    min-height: 154px;
   }
 }
 

@@ -263,10 +263,10 @@ function Reveal({
 
 function SectionHeader({ eyebrow, title, body }: { eyebrow: string; title: string; body: string }) {
   return (
-    <Reveal className="mx-auto mb-12 max-w-3xl text-center md:mb-14">
+    <Reveal className="mx-auto mb-9 max-w-3xl text-center md:mb-14">
       <span className="eyebrow">{eyebrow}</span>
-      <h2 className="mt-5 text-3xl font-semibold leading-tight md:text-5xl">{title}</h2>
-      <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-300 md:text-lg">{body}</p>
+      <h2 className="mt-5 text-2xl font-semibold leading-tight sm:text-3xl md:text-5xl">{title}</h2>
+      <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base md:mt-5 md:text-lg">{body}</p>
     </Reveal>
   );
 }
@@ -401,12 +401,12 @@ export default function Home() {
 
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#060816]/72 backdrop-blur-2xl">
         <motion.nav
-          className="shell flex h-20 items-center justify-between"
+          className="shell flex h-16 items-center justify-between md:h-20"
           initial={{ opacity: 0, y: -18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         >
-          <a href="#top" className="text-xl font-semibold tracking-wide">
+          <a href="#top" className="text-lg font-semibold tracking-wide md:text-xl">
             NexLocalWeb
           </a>
           <div className="hidden items-center gap-7 rounded-full border border-white/10 bg-white/[.035] px-5 py-3 text-sm text-slate-300 lg:flex">
@@ -453,7 +453,7 @@ export default function Home() {
         </AnimatePresence>
       </header>
 
-      <section id="top" className="relative min-h-[92vh] overflow-hidden pt-32 md:pt-36">
+      <section id="top" className="relative overflow-hidden pt-28 md:min-h-[92vh] md:pt-36">
         <Image
           src="/images/nexlocalweb-hero.png"
           alt=""
@@ -465,45 +465,40 @@ export default function Home() {
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(6,8,22,.62),rgba(6,8,22,.76)_48%,#060816_94%)]" />
         <motion.div
           aria-hidden
-          className="absolute inset-x-0 top-20 -z-10 h-80 bg-gradient-to-r from-cyan-500/16 via-violet-500/16 to-blue-500/16 blur-3xl"
+          className="absolute left-4 right-4 top-20 -z-10 h-80 bg-gradient-to-r from-cyan-500/16 via-violet-500/16 to-blue-500/16 blur-3xl"
           animate={{ opacity: [0.55, 0.95, 0.55], scale: [1, 1.08, 1] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        <div className="shell relative z-10 pb-52 text-center md:pb-64">
+        <div className="shell relative z-10 pb-16 text-center md:pb-64">
           <div className="relative z-10">
-            <Reveal>
-              <span className="eyebrow">
-                <Cpu className="size-4" /> AI-powered premium web studio for India
-              </span>
-            </Reveal>
             <motion.h1
               initial={{ opacity: 0, y: 34, filter: "blur(10px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-              className="mx-auto mt-6 max-w-5xl text-5xl font-semibold leading-[1.02] md:text-6xl lg:text-7xl"
+              className="mx-auto max-w-5xl text-4xl font-semibold leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl"
             >
               Websites that make local businesses look <span className="gradient-text">premium.</span>
             </motion.h1>
             <Reveal delay={0.1}>
-              <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-slate-200 md:text-lg">
+              <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-slate-200 sm:text-base md:mt-6 md:text-lg md:leading-8">
                 NexLocalWeb builds cinematic, mobile-first websites for gyms, cafes, restaurants, clinics, real estate
                 brands, coaching institutes, shops, personal brands, and startups across India.
               </p>
             </Reveal>
             <Reveal delay={0.16}>
-              <div className="mt-7 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
                 <MotionLink href="#contact">Book Free Call <ArrowRight className="size-4" /></MotionLink>
                 <MotionLink href="#work" variant="secondary">View Our Work <ExternalLink className="size-4" /></MotionLink>
               </div>
             </Reveal>
             <Reveal delay={0.22}>
-              <div className="mx-auto mt-9 flex w-fit max-w-full flex-wrap items-center justify-center gap-3 rounded-[8px] border border-white/10 bg-[#060816]/62 p-3 text-sm text-slate-300 shadow-glow backdrop-blur-xl">
+              <div className="mx-auto mt-8 flex w-fit max-w-full flex-wrap items-center justify-center gap-2 rounded-[8px] border border-white/10 bg-[#060816]/62 p-2 text-xs text-slate-300 shadow-glow backdrop-blur-xl sm:gap-3 sm:p-3 sm:text-sm">
                 <span>Trusted by ambitious local brands</span>
                 {["PulseFit", "BrewLane", "UrbanSmiles", "EstatePro", "SkillForge"].map((brand) => (
                   <motion.span
                     key={brand}
-                    className="rounded-full border border-white/10 bg-white/[.05] px-4 py-2 font-semibold text-white"
+                    className="rounded-full border border-white/10 bg-white/[.05] px-3 py-1.5 font-semibold text-white sm:px-4 sm:py-2"
                     whileHover={{ y: -2, borderColor: "rgba(34,211,238,.42)" }}
                   >
                     {brand}
@@ -516,7 +511,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="shell relative z-10 -mt-8 pb-24 md:-mt-16">
+      <section className="shell relative z-10 pb-16 md:-mt-16 md:pb-24">
         <div className="grid gap-4 md:grid-cols-4">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
@@ -539,7 +534,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="services" className="shell py-20 md:py-28">
+      <section id="services" className="shell py-14 md:py-28">
         <SectionHeader
           eyebrow="Premium Services"
           title="Everything a local business needs to feel expensive online."
@@ -571,19 +566,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="work" className="shell py-20 md:py-28">
+      <section id="work" className="shell py-14 md:py-28">
         <SectionHeader
           eyebrow="Featured Work"
           title="Demo projects with real agency-grade positioning."
           body="Each concept is built around trust, faster decisions, and a premium first impression."
         />
         <Reveal>
-          <div className="mb-8 flex flex-wrap justify-center gap-3">
+          <div className="mb-7 flex flex-wrap justify-center gap-2 sm:gap-3 md:mb-8">
             {categories.map((category) => (
               <motion.button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
+                className={`rounded-full border px-3 py-2 text-xs font-semibold transition sm:px-4 sm:text-sm ${
                   activeCategory === category
                     ? "border-cyan-300/60 bg-cyan-300/14 text-white shadow-glow"
                     : "border-white/10 bg-white/[.04] text-slate-400 hover:text-white"
@@ -596,7 +591,7 @@ export default function Home() {
             ))}
           </div>
         </Reveal>
-        <motion.div layout className="grid gap-5 md:grid-cols-2">
+        <motion.div layout className="grid gap-4 md:grid-cols-2 md:gap-5">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
               <motion.article
@@ -606,11 +601,11 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 18, scale: 0.96 }}
                 transition={{ duration: 0.35 }}
-                className="glow-card glass group overflow-hidden rounded-[8px] p-3"
+                className="glow-card glass group overflow-hidden rounded-[8px] p-2 sm:p-3"
                 whileHover={{ y: -8 }}
               >
                 <div
-                  className={`project-preview transition duration-500 group-hover:scale-[1.035] ${
+                  className={`project-preview transition duration-500 md:group-hover:scale-[1.035] ${
                     project.image ? "with-image" : ""
                   }`}
                   style={{ "--a": project.colors[0], "--b": project.colors[1] } as React.CSSProperties}
@@ -629,7 +624,7 @@ export default function Home() {
                       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(34,211,238,.22),transparent_24rem)]" />
                     </>
                   ) : null}
-                  <div className="absolute inset-x-5 bottom-5 z-10">
+                  <div className="absolute inset-x-4 bottom-4 z-10 sm:inset-x-5 sm:bottom-5">
                     <div className="flex items-center justify-between gap-3 text-xs font-semibold uppercase text-cyan-100">
                       <span
                         className={
@@ -645,7 +640,7 @@ export default function Home() {
                       ) : null}
                     </div>
                     <p
-                      className={`mt-3 max-w-sm text-xl font-semibold leading-tight text-white ${
+                      className={`mt-2 max-w-sm text-lg font-semibold leading-tight text-white sm:mt-3 sm:text-xl ${
                         project.image
                           ? "rounded-[8px] bg-black/52 px-3 py-2 shadow-[0_14px_38px_rgba(0,0,0,.42)] backdrop-blur-md"
                           : "drop-shadow-lg"
@@ -655,7 +650,7 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="p-5">
+                <div className="p-4 sm:p-5">
                   <div className="mb-4 flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <span key={tag} className="rounded-full bg-white/[.06] px-3 py-1 text-xs text-cyan-100">
@@ -664,7 +659,7 @@ export default function Home() {
                     ))}
                   </div>
                   <p className="text-sm font-semibold text-cyan-200">{project.category}</p>
-                  <h3 className="mt-2 text-2xl font-semibold">{project.title}</h3>
+                  <h3 className="mt-2 text-xl font-semibold sm:text-2xl">{project.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-slate-400">{project.summary}</p>
                   {project.liveUrl ? (
                     <a
@@ -683,7 +678,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <section className="shell py-20 md:py-28">
+      <section className="shell py-14 md:py-28">
         <SectionHeader
           eyebrow="Why Choose Us"
           title="Premium design discipline with local-business practicality."
@@ -705,7 +700,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="process" className="shell py-20 md:py-28">
+      <section id="process" className="shell py-14 md:py-28">
         <SectionHeader
           eyebrow="Process"
           title="A clear launch path from first call to live website."
@@ -729,7 +724,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="team" className="shell py-20 md:py-28">
+      <section id="team" className="shell py-14 md:py-28">
         <SectionHeader
           eyebrow="Core Team"
           title="A compact studio built like a product team."
@@ -754,7 +749,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="overflow-hidden py-20 md:py-28">
+      <section className="overflow-hidden py-14 md:py-28">
         <div className="shell">
           <SectionHeader
             eyebrow="Testimonials"
@@ -764,7 +759,7 @@ export default function Home() {
         </div>
         <div className="testimonial-track flex w-max gap-4 px-4">
           {[...testimonials, ...testimonials].map(([name, company, quote], index) => (
-            <article key={`${name}-${index}`} className="glow-card glass w-[340px] shrink-0 rounded-[8px] p-6 md:w-[430px]">
+            <article key={`${name}-${index}`} className="glow-card glass w-[calc(100vw-32px)] max-w-[340px] shrink-0 rounded-[8px] p-5 md:w-[430px] md:max-w-none md:p-6">
               <div className="mb-5 flex gap-1 text-cyan-200">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="size-4 fill-current" />
@@ -780,7 +775,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="shell py-20 md:py-28">
+      <section className="shell py-14 md:py-28">
         <SectionHeader
           eyebrow="FAQ"
           title="Straight answers before the first call."
@@ -816,14 +811,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="shell py-20 md:py-28">
+      <section id="contact" className="shell py-14 md:py-28">
         <div className="grid gap-6 lg:grid-cols-[.9fr_1.1fr]">
           <Reveal>
             <div>
               <span className="eyebrow">
                 <Mail className="size-4" /> Start a premium web project
               </span>
-              <h2 className="mt-5 text-3xl font-semibold leading-tight md:text-5xl">
+              <h2 className="mt-5 text-2xl font-semibold leading-tight sm:text-3xl md:text-5xl">
                 Tell us what you want your business to become online.
               </h2>
               <p className="mt-5 text-base leading-8 text-slate-300">
@@ -832,7 +827,7 @@ export default function Home() {
               </p>
               <motion.a
                 href={`mailto:${email}`}
-                className="glass mt-8 flex items-center gap-4 rounded-[8px] p-4"
+                className="glass mt-8 flex min-w-0 items-center gap-4 rounded-[8px] p-4"
                 whileHover={{ y: -5, borderColor: "rgba(34,211,238,.45)" }}
               >
                 <span className="flex size-11 items-center justify-center rounded-[8px] bg-cyan-300/10 text-cyan-200">
@@ -840,7 +835,7 @@ export default function Home() {
                 </span>
                 <span>
                   <span className="block text-sm text-slate-400">Email</span>
-                  <span className="font-semibold">{email}</span>
+                  <span className="break-all font-semibold">{email}</span>
                 </span>
               </motion.a>
             </div>
@@ -872,7 +867,7 @@ export default function Home() {
                 />
               </label>
               <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <motion.button className="btn btn-primary" type="submit" whileHover={{ y: -3 }} whileTap={{ scale: 0.97 }}>
+                <motion.button className="btn btn-primary w-full sm:w-auto" type="submit" whileHover={{ y: -3 }} whileTap={{ scale: 0.97 }}>
                   Send Inquiry <ArrowRight className="size-4" />
                 </motion.button>
                 <p className="text-sm text-slate-500">UI-only form. Use email to contact us.</p>
