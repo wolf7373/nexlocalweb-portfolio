@@ -102,6 +102,24 @@ const services: Array<{ title: string; body: string; icon: LucideIcon }> = [
   }
 ];
 
+const beforeAfter = [
+  {
+    metric: "First impression",
+    before: "Generic layout, weak headline, and no clear reason to trust the business.",
+    after: "Premium hero, strong positioning, and instant confidence for local buyers."
+  },
+  {
+    metric: "Mobile journey",
+    before: "Crowded sections, hidden contact options, and slow decision paths.",
+    after: "Thumb-friendly layout, visible CTAs, and fast inquiry flow on every screen."
+  },
+  {
+    metric: "Conversion signals",
+    before: "No proof, no offer clarity, and pages that feel like an online brochure.",
+    after: "Trust blocks, service clarity, local intent copy, and action-led sections."
+  }
+] as const;
+
 type Project = {
   title: string;
   category: string;
@@ -382,6 +400,101 @@ function MotionLink({
   );
 }
 
+function BeforeAfterSection() {
+  return (
+    <section className="shell py-14 md:py-28">
+      <SectionHeader
+        eyebrow="Before / After"
+        title="Turn an ordinary online presence into a premium sales asset."
+        body="Local customers judge quality fast. We redesign that first impression so your business feels trusted, modern, and worth choosing."
+      />
+      <Reveal>
+        <div className="glass glow-card overflow-hidden rounded-[8px] p-4 sm:p-5 md:p-7">
+          <div className="grid gap-4 lg:grid-cols-[1fr_auto_1fr] lg:items-stretch">
+            <motion.div
+              className="rounded-[8px] border border-white/10 bg-white/[.035] p-5"
+              whileHover={{ y: -5 }}
+              transition={{ type: "spring", stiffness: 260, damping: 22 }}
+            >
+              <div className="mb-5 flex items-center justify-between gap-4">
+                <span className="rounded-full border border-white/10 bg-white/[.04] px-3 py-1 text-xs font-semibold uppercase text-slate-400">
+                  Before
+                </span>
+                <span className="text-xs font-semibold text-slate-500">Low-trust website</span>
+              </div>
+              <div className="space-y-3">
+                {beforeAfter.map((item) => (
+                  <div key={item.metric} className="rounded-[8px] border border-white/[.08] bg-[#07091a]/70 p-4">
+                    <p className="text-sm font-semibold text-slate-300">{item.metric}</p>
+                    <p className="mt-2 text-sm leading-7 text-slate-500">{item.before}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <div className="flex items-center justify-center py-1 lg:px-2">
+              <motion.div
+                className="flex size-12 items-center justify-center rounded-full border border-cyan-200/35 bg-cyan-300/12 text-cyan-100 shadow-glow"
+                animate={{ x: [0, 6, 0], boxShadow: ["0 0 22px rgba(34,211,238,.18)", "0 0 42px rgba(34,211,238,.34)", "0 0 22px rgba(34,211,238,.18)"] }}
+                transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <ArrowRight className="size-5" />
+              </motion.div>
+            </div>
+
+            <motion.div
+              className="relative overflow-hidden rounded-[8px] border border-cyan-200/18 bg-cyan-300/[.055] p-5"
+              whileHover={{ y: -5 }}
+              transition={{ type: "spring", stiffness: 260, damping: 22 }}
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_8%,rgba(34,211,238,.22),transparent_21rem),radial-gradient(circle_at_86%_20%,rgba(139,92,246,.18),transparent_20rem)]" />
+              <div className="relative">
+                <div className="mb-5 flex items-center justify-between gap-4">
+                  <span className="rounded-full border border-cyan-200/24 bg-cyan-300/12 px-3 py-1 text-xs font-semibold uppercase text-cyan-100">
+                    After
+                  </span>
+                  <span className="text-xs font-semibold text-cyan-100/80">Premium conversion site</span>
+                </div>
+                <div className="space-y-3">
+                  {beforeAfter.map((item) => (
+                    <div key={item.metric} className="rounded-[8px] border border-cyan-200/14 bg-[#060816]/72 p-4 shadow-glow">
+                      <p className="flex items-center gap-2 text-sm font-semibold text-white">
+                        <Sparkles className="size-4 text-cyan-200" />
+                        {item.metric}
+                      </p>
+                      <p className="mt-2 text-sm leading-7 text-slate-300">{item.after}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </Reveal>
+    </section>
+  );
+}
+
+function StickyMobileCta() {
+  return (
+    <motion.div
+      className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-[#060816]/86 px-3 py-3 shadow-[0_-18px_50px_rgba(0,0,0,.38)] backdrop-blur-2xl sm:hidden"
+      initial={{ y: 96, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
+    >
+      <div className="mx-auto grid max-w-md grid-cols-[1fr_auto] gap-2">
+        <a href="#contact" className="btn btn-primary min-w-0 px-4 text-sm">
+          Book Free Call <ArrowRight className="size-4" />
+        </a>
+        <a href={`mailto:${email}`} aria-label="Email NexLocalWeb" className="btn btn-secondary px-4">
+          <Mail className="size-4" />
+        </a>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All");
@@ -393,11 +506,12 @@ export default function Home() {
   );
 
   return (
-    <main className="relative overflow-hidden">
+    <main className="relative overflow-hidden pb-20 sm:pb-0">
       <CustomCursor />
       <div className="grid-bg" />
       <div className="noise" />
       <Particles />
+      <StickyMobileCta />
 
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#060816]/72 backdrop-blur-2xl">
         <motion.nav
@@ -565,6 +679,8 @@ export default function Home() {
           })}
         </div>
       </section>
+
+      <BeforeAfterSection />
 
       <section id="work" className="shell py-14 md:py-28">
         <SectionHeader
