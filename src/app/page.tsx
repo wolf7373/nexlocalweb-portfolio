@@ -498,7 +498,7 @@ function StickyMobileCta() {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All");
-  const [openFaq, setOpenFaq] = useState<string>(faqs[0][0]);
+  const [openFaq, setOpenFaq] = useState<string>("");
   const categories = ["All", "Startup", "Gym", "Cafe", "Restaurant", "Real Estate", "AI"];
   const filteredProjects = useMemo(
     () => projects.filter((project) => activeCategory === "All" || project.category === activeCategory),
